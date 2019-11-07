@@ -13,23 +13,26 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text(appTitle),
         ),
-        body: MyCustomForm(),
+        body: MainScreen(),
       ),
+      routes: {
+        ResultScreen.routeName: (context) => ResultScreen(),
+      },
     );
   }
 }
 
 // Create a Form widget.
-class MyCustomForm extends StatefulWidget {
+class MainScreen extends StatefulWidget {
   @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
+  MainScreenState createState() {
+    return MainScreenState();
   }
 }
 
 // Create a corresponding State class.
 // This class holds data related to the form.
-class MyCustomFormState extends State<MyCustomForm> {
+class MainScreenState extends State<MainScreen> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   //
@@ -39,8 +42,6 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   final weightController = TextEditingController();
   final heightController = TextEditingController();
-
-  String bmiResult = "";
 
   @override
   Widget build(BuildContext context) {
@@ -85,34 +86,63 @@ class MyCustomFormState extends State<MyCustomForm> {
                     // Validate returns true if the form is valid, or false
                     // otherwise.
                     if (_formKey.currentState.validate()) {
-                      calculateBMI();
+                      calculateBMIAndRoute();
                     }
                   },
                   child: Text('Submit'),
-                ),
-                new Container(
-                    margin: const EdgeInsets.only(top: 50.0),
-                    child: Text(
-                      bmiResult == null ? "" : bmiResult,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
-                    ))
+                )
               ],
             )),
           )),
     );
   }
 
-  calculateBMI() {
+  calculateBMIAndRoute() {
     double bmi = double.parse(weightController.text) /
         ((double.parse(heightController.text) / 10) *
             (double.parse(heightController.text) / 10)) *
         100;
 
-    setState(() {
-      bmiResult = bmi.toStringAsFixed(2);
-    });
+    Navigator.pushNamed(
+      context,
+      ResultScreen.routeName,
+      arguments: ScreenArguments(bmi.toStringAsPrecision(2)),
+    );
   }
+}
+
+class ResultScreen extends StatelessWidget {
+  static const routeName = '/result';
+
+  @override
+  Widget build(BuildContext context) {
+    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Result"),
+        ),
+        body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Center(
+                  child: Text('Your BMI rate is: ' + args.bmiValue)),
+              Center(
+                  child: RaisedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('BACK'),
+              )),
+            ]));
+  }
+}
+
+// You can pass any object to the arguments parameter.
+// In this example, create a class that contains a customizable
+// title and message.
+class ScreenArguments {
+  final String bmiValue;
+
+  ScreenArguments(this.bmiValue);
 }
