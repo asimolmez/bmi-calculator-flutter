@@ -11,8 +11,7 @@ class MyApp extends StatelessWidget {
       title: appTitle,
       home: Scaffold(
         appBar: AppBar(
-          title: Text(appTitle),
-        ),
+          title: Text(appTitle)),
         body: MainScreen(),
       ),
       routes: {
@@ -20,6 +19,28 @@ class MyApp extends StatelessWidget {
       },
     );
   }
+}
+
+openInformationModal(BuildContext context) {
+  Navigator.push(
+      context,
+      MaterialPageRoute<Null>(
+        builder: (BuildContext cx) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Center(child: Text("It is simple app.")),
+              Center(
+                  child: RaisedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('BACK'),
+              )),
+            ]);
+        },
+        fullscreenDialog: true,
+      ));
 }
 
 // Create a Form widget.
@@ -90,6 +111,14 @@ class MainScreenState extends State<MainScreen> {
                     }
                   },
                   child: Text('Submit'),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    // Validate returns true if the form is valid, or false
+                    // otherwise.
+                    openInformationModal(context);
+                  },
+                  child: Text('Information'),
                 )
               ],
             )),
@@ -125,8 +154,7 @@ class ResultScreen extends StatelessWidget {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Center(
-                  child: Text('Your BMI rate is: ' + args.bmiValue)),
+              Center(child: Text('Your BMI rate is: ' + args.bmiValue)),
               Center(
                   child: RaisedButton(
                 onPressed: () {
