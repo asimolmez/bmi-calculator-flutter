@@ -163,13 +163,18 @@ class MainScreenState extends State<MainScreen> {
                   onPressed: () {
                     // Validate returns true if the form is valid, or false
                     // otherwise.
-                    // openInformationModal(context);
-                        Navigator.pushNamed(
-                          context,
-                          "/app"
-                        );
+                    openInformationModal(context);
                   },
                   child: Text('Information'),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        "/app"
+                      );
+                  },
+                  child: Text('Open Tabbed Navigation'),
                 )
               ],
             )),
