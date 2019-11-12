@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/tab_container.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         ResultScreen.routeName: (context) => ResultScreen(),
+        "/app" : (context) => TabContainerWidget()
       },
     );
   }
@@ -116,7 +118,11 @@ class MainScreenState extends State<MainScreen> {
                   onPressed: () {
                     // Validate returns true if the form is valid, or false
                     // otherwise.
-                    openInformationModal(context);
+                    // openInformationModal(context);
+                        Navigator.pushNamed(
+                          context,
+                          "/app"
+                        );
                   },
                   child: Text('Information'),
                 )
