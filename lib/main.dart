@@ -3,7 +3,20 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final appTitle = "BMI CALCULATOR";
@@ -11,9 +24,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: appTitle,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(appTitle)),
+        appBar: AppBar(title: Text(appTitle)),
         body: MainScreen(),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+              
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              title: Text('Business'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              title: Text('School'),
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.amber[800],
+          onTap: _onItemTapped,
+        ),
       ),
       routes: {
         ResultScreen.routeName: (context) => ResultScreen(),
@@ -29,17 +61,17 @@ openInformationModal(BuildContext context) {
       MaterialPageRoute<Null>(
         builder: (BuildContext cx) {
           return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Center(child: Text("It is simple app.")),
-              Center(
-                  child: RaisedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('BACK'),
-              )),
-            ]);
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Center(child: Text("It is simple app.")),
+                Center(
+                    child: RaisedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('BACK'),
+                )),
+              ]);
         },
         fullscreenDialog: true,
       ));
@@ -56,6 +88,9 @@ class MainScreen extends StatefulWidget {
 // Create a corresponding State class.
 // This class holds data related to the form.
 class MainScreenState extends State<MainScreen> {
+  final heightController = TextEditingController();
+  final weightController = TextEditingController();
+
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   //
@@ -63,8 +98,18 @@ class MainScreenState extends State<MainScreen> {
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
 
-  final weightController = TextEditingController();
-  final heightController = TextEditingController();
+  calculateBMIAndRoute() {
+    double bmi = double.parse(weightController.text) /
+        ((double.parse(heightController.text) / 10) *
+            (double.parse(heightController.text) / 10)) *
+        100;
+
+    Navigator.pushNamed(
+      context,
+      ResultScreen.routeName,
+      arguments: ScreenArguments(bmi.toStringAsPrecision(2)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,19 +176,6 @@ class MainScreenState extends State<MainScreen> {
           )),
     );
   }
-
-  calculateBMIAndRoute() {
-    double bmi = double.parse(weightController.text) /
-        ((double.parse(heightController.text) / 10) *
-            (double.parse(heightController.text) / 10)) *
-        100;
-
-    Navigator.pushNamed(
-      context,
-      ResultScreen.routeName,
-      arguments: ScreenArguments(bmi.toStringAsPrecision(2)),
-    );
-  }
 }
 
 class ResultScreen extends StatelessWidget {
@@ -176,7 +208,7 @@ class ResultScreen extends StatelessWidget {
 // In this example, create a class that contains a customizable
 // title and message.
 class ScreenArguments {
-  final String bmiValue;
-
   ScreenArguments(this.bmiValue);
+
+  final String bmiValue;
 }
