@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'components/Bar.dart';
 
 class SvgScreen extends StatefulWidget {
@@ -31,6 +32,14 @@ class _SvgScreenState extends State<SvgScreen> {
             color: Colors.white,
             child: Column(
               children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child: SvgPicture.network(
+                    "https://www.svgrepo.com/show/2046/dog.svg",
+                    placeholderBuilder: (context) => CircularProgressIndicator(),
+                    height: 128.0,
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: PieChart(
