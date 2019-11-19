@@ -1,0 +1,2 @@
+1. Run on Web: flutter run -d chrome
+2. Build APK: flutter build apk
