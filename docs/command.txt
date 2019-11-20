@@ -1,2 +1,8 @@
 1. Run on Web: flutter run -d chrome
 2. Build APK: flutter build apk
+
+
+To build web :
+1. Run "flutter build web"
+2. cd into build/web
+3. copy folders to static host
