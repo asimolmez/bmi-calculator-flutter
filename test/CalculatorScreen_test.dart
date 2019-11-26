@@ -33,5 +33,8 @@ void main() {
     expect(find.text('90'), findsOneWidget);
 
     expect(() {return CommonHelper.getBMI("90", "180");}, returnsNormally);
+
+    //await tester.tap(find.byType(RaisedButton));
+    //await tester.pump();
   });
 }
