@@ -40,6 +40,7 @@ class CalculatorScreenState extends State<CalculatorScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 TextFormField(
+                  key: Key('heightForm'),
                   controller: heightController,
                   validator: (value) {
                     if (value.isEmpty) {
@@ -52,6 +53,7 @@ class CalculatorScreenState extends State<CalculatorScreen> {
                   keyboardType: TextInputType.number,
                 ),
                 TextFormField(
+                  key: Key('weightForm'),
                   controller: weightController,
                   validator: (value) {
                     if (value.isEmpty) {
