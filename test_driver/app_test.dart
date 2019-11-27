@@ -1,14 +1,13 @@
 // Imports the Flutter Driver API.
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
+import 'package:bmi_calculator/helpers/CommonHelper.dart';
 
 void main() {
   group('Counter App', () {
     // First, define the Finders and use them to locate widgets from the
     // test suite. Note: the Strings provided to the `byValueKey` method must
     // be the same as the Strings we used for the Keys in step 1.
-    final counterTextFinder = find.byType("weightForm");
-    final buttonFinder = find.byValueKey('calculateButton');
 
     FlutterDriver driver;
 
@@ -24,17 +23,34 @@ void main() {
       }
     });
 
-    test('starts at 0', () async {
-      // Use the `driver.getText` method to verify the counter starts at 0.
-      expect(await driver.getText(counterTextFinder), "");
+    test('enter height', () async {
+      final SerializableFinder heightInput = find.byValueKey('heightForm');
+      await driver.tap(heightInput);
+      expect(heightInput, isNotNull);
+      await driver.waitFor(heightInput);
+      await driver.enterText('180');
+      await driver.waitFor(find.text('180'));
     });
 
-    test('increments the counter', () async {
-      // First, tap the button.
-      await driver.tap(buttonFinder);
+    test('enter weight', () async {
+      final SerializableFinder weightInput = find.byValueKey("weightForm");
+      await driver.tap(weightInput);
+      expect(weightInput, isNotNull);
+      await driver.waitFor(weightInput);
+      await driver.enterText('90');
+      await driver.waitFor(find.text('90'));
+    });
 
-      // Then, verify the counter text is incremented by 1.
-      expect(await driver.getText(counterTextFinder), "");
+    test('click submit', () async {
+      final SerializableFinder calculateButton = find.byValueKey("calculateButton");
+      await driver.waitFor(calculateButton);
+      await driver.tap(calculateButton);
+    });
+
+    test('test result page', () async {
+      final SerializableFinder resultText = find.byValueKey("resultText");
+      expect(resultText, isNotNull);
+      //await driver.waitForAbsent(find.text('Your BMI rate is: ' + CommonHelper.getBMI("90", "180").toString()));
     });
   });
 }
