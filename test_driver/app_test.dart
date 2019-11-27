@@ -7,8 +7,8 @@ void main() {
     // First, define the Finders and use them to locate widgets from the
     // test suite. Note: the Strings provided to the `byValueKey` method must
     // be the same as the Strings we used for the Keys in step 1.
-    final counterTextFinder = find.byValueKey('counter');
-    final buttonFinder = find.byValueKey('increment');
+    final counterTextFinder = find.byType("weightForm");
+    final buttonFinder = find.byValueKey('calculateButton');
 
     FlutterDriver driver;
 
@@ -26,7 +26,7 @@ void main() {
 
     test('starts at 0', () async {
       // Use the `driver.getText` method to verify the counter starts at 0.
-      expect(await driver.getText(counterTextFinder), "0");
+      expect(await driver.getText(counterTextFinder), "");
     });
 
     test('increments the counter', () async {
@@ -34,7 +34,7 @@ void main() {
       await driver.tap(buttonFinder);
 
       // Then, verify the counter text is incremented by 1.
-      expect(await driver.getText(counterTextFinder), "1");
+      expect(await driver.getText(counterTextFinder), "");
     });
   });
 }

@@ -66,6 +66,7 @@ class CalculatorScreenState extends State<CalculatorScreen> {
                   keyboardType: TextInputType.number,
                 ),
                 RaisedButton(
+                  key: Key('calculateButton'),
                   onPressed: () {
                     // Validate returns true if the form is valid, or false
                     // otherwise.
