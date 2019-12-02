@@ -48,9 +48,18 @@ void main() {
     });
 
     test('test result page', () async {
-      final SerializableFinder resultText = find.byValueKey("resultText");
-      expect(resultText, isNotNull);
-      //await driver.waitForAbsent(find.text('Your BMI rate is: ' + CommonHelper.getBMI("90", "180").toString()));
+      var bmiResult = CommonHelper.getBMI("90", "180").toStringAsPrecision(2);
+
+      final SerializableFinder resultObj = find.byValueKey("resultText");
+      await driver.waitFor(resultObj);
+      expect(resultObj, isNotNull);
+      var resultText;
+      await driver.getText(resultObj).then((s) {
+        print(s);
+        resultText = s;
+      });
+
+      expect(resultText, "Your BMI rate is: " + bmiResult);
     });
   });
 }

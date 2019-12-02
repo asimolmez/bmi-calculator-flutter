@@ -15,7 +15,7 @@ class ResultScreen extends StatelessWidget {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Center(child: Text('Your BMI rate is: ' + args.bmiValue), key: Key('resultText')),
+              Center(child: Text('Your BMI rate is: ' + args.bmiValue, key: Key('resultText'))),
               Center(
                   child: RaisedButton(
                 onPressed: () {
