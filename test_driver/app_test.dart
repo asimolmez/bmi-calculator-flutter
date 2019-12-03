@@ -2,6 +2,8 @@
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 import 'package:bmi_calculator/helpers/CommonHelper.dart';
+import 'package:intl/intl.dart';
+import 'dart:io';
 
 void main() {
   group('Counter App', () {
@@ -23,6 +25,18 @@ void main() {
       }
     });
 
+    String folderName = "";
+
+    test('creating test files folders', () async {
+
+      folderName = "test_driver/test_output/" + new DateFormat("ddMMyyyy_HHmmss").format(DateTime.now()) + "/";
+      new Directory(folderName).create()
+      // The created directory is returned as a Future.
+          .then((Directory directory) {
+        print(directory.path);
+      });
+    });
+
     test('enter height', () async {
       final SerializableFinder heightInput = find.byValueKey('heightForm');
       await driver.tap(heightInput);
@@ -30,6 +44,8 @@ void main() {
       await driver.waitFor(heightInput);
       await driver.enterText('180');
       await driver.waitFor(find.text('180'));
+
+      await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
     });
 
     test('enter weight', () async {
@@ -39,12 +55,24 @@ void main() {
       await driver.waitFor(weightInput);
       await driver.enterText('90');
       await driver.waitFor(find.text('90'));
+      await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
     });
 
     test('click submit', () async {
       final SerializableFinder calculateButton = find.byValueKey("calculateButton");
       await driver.waitFor(calculateButton);
       await driver.tap(calculateButton);
+    });
+
+    test('take sample screenshots', () async {
+      final List<String> paths = <String>[folderName + "BMI_result_screenshot.png"];
+      for (String path in paths) {
+        await driver.waitUntilNoTransientCallbacks();
+        final List<int> pixels = await driver.screenshot();
+        final File file = new File(path);
+        await file.writeAsBytes(pixels);
+        print('wrote $file');
+      }
     });
 
     test('test result page', () async {
@@ -60,6 +88,36 @@ void main() {
       });
 
       expect(resultText, "Your BMI rate is: " + bmiResult);
+      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+
+      final SerializableFinder goBackButton = find.byValueKey("goBackButton");
+      await driver.waitFor(goBackButton);
+      await driver.tap(goBackButton);
+
+      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+    });
+
+    test('switch information tab', () async {
+      await driver.waitFor(find.byValueKey('bottomNavigation'));
+      await driver.tap(find.text('Graps'));
+      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await driver.tap(find.text('Information'));
+      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+
+      final SerializableFinder detailsModalButton = find.byValueKey("detailsModalButton");
+      await driver.waitFor(detailsModalButton);
+      await driver.scrollIntoView(detailsModalButton);
+      //await driver.waitFor(find.text('Scroll till here'));
+      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await driver.tap(detailsModalButton);
+
+      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      final SerializableFinder detailsModalCloseButton = find.byValueKey("detailsModalCloseButton");
+      await driver.waitFor(detailsModalCloseButton);
+      await driver.tap(detailsModalCloseButton);
+
+      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await driver.tap(find.text('Calculator'));
     });
   });
 }

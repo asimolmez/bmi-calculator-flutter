@@ -18,11 +18,12 @@ class ResultScreen extends StatelessWidget {
               Center(child: Text('Your BMI rate is: ' + args.bmiValue, key: Key('resultText'))),
               Center(
                   child: RaisedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('BACK'),
-              )),
+                    key: Key('goBackButton'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('BACK'),
+                  )),
             ]));
   }
 }

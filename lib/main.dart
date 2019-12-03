@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
       routes: {ResultScreen.routeName: (context) => ResultScreen()}
     );
   }
-  
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -50,6 +50,7 @@ class _MyAppState extends State<MyApp> {
 
   Widget _getNavigationBar() {
     return BottomNavigationBar(
+      key: Key('bottomNavigation'),
       type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(

@@ -1,0 +1,342 @@
+
+FLUTTER UI TEST AUTOMATION STARTED
+
+GETTING CONNECTED DEVICES
+
+=================================
+1) iPhone 5s
+2) iPhone X
+3) iPhone 11 Pro Max
+
+TEST STARTED ON ==> iPhone 5s
+Starting application: test_driver/app.dart
+Running Xcode build...                                          
+Xcode build done.                                           10.5s
+flutter: Observatory listening on http://127.0.0.1:50430/dadXLGb1uxE=/
+00:00 [32m+0[0m: Counter App (setUpAll)[0m
+
+00:00 [32m+0[0m: Counter App creating test files folders[0m
+
+00:00 [32m+1[0m: Counter App creating test files folders[0m
+
+test_driver/test_output/03122019_185816/
+
+00:00 [32m+1[0m: Counter App enter height[0m
+
+00:02 [32m+2[0m: Counter App enter weight[0m
+
+00:03 [32m+3[0m: Counter App click submit[0m
+
+00:03 [32m+4[0m: Counter App take sample screenshots[0m
+
+wrote File: 'test_driver/test_output/03122019_185816/BMI_result_screenshot.png'
+
+00:05 [32m+5[0m: Counter App test result page[0m
+
+Your BMI rate is: 28
+
+00:09 [32m+6[0m: Counter App switch information tab[0m
+
+flutter: ══╡ EXCEPTION CAUGHT BY RENDERING LIBRARY ╞═════════════════════════════════════════════════════════
+flutter: The following assertion was thrown during layout:
+flutter: A RenderFlex overflowed by 221 pixels on the bottom.
+flutter:
+flutter: The relevant error-causing widget was:
+flutter:   Column
+flutter:   file:///Users/burakyilmaz/Desktop/Projects/bmi-calculator-flutter/lib/screens/InformationScreen/InformationScreen.dart:77:20
+flutter:
+flutter: The overflowing RenderFlex has an orientation of Axis.vertical.
+flutter: The edge of the RenderFlex that is overflowing has been marked in the rendering with a yellow and
+flutter: black striped pattern. This is usually caused by the contents being too big for the RenderFlex.
+flutter: Consider applying a flex factor (e.g. using an Expanded widget) to force the children of the
+flutter: RenderFlex to fit within the available space instead of being sized to their natural size.
+flutter: This is considered an error condition because it indicates that there is content that cannot be
+flutter: seen. If the content is legitimately bigger than the available space, consider clipping it with a
+flutter: ClipRect widget before putting it in the flex, or using a scrollable container rather than a Flex,
+flutter: like a ListView.
+flutter: The specific RenderFlex in question is: RenderFlex#e24b4 OVERFLOWING:
+flutter:   needs compositing
+flutter:   creator: Column ← Semantics ← Builder ← RepaintBoundary-[GlobalKey#4fe75] ← IgnorePointer ←
+flutter:     AnimatedBuilder ← FractionalTranslation ← SlideTransition ← CupertinoFullscreenDialogTransition ←
+flutter:     AnimatedBuilder ← RepaintBoundary ← _FocusMarker ← ⋯
+flutter:   parentData: <none> (can use size)
+flutter:   constraints: BoxConstraints(w=320.0, h=568.0)
+flutter:   size: Size(320.0, 568.0)
+flutter:   direction: vertical
+flutter:   mainAxisAlignment: spaceAround
+flutter:   mainAxisSize: max
+flutter:   crossAxisAlignment: center
+flutter:   verticalDirection: down
+flutter: ◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤
+flutter: ════════════════════════════════════════════════════════════════════════════════════════════════════
+00:40 [32m+6[0m[31m -1[0m: Counter App switch information tab [1m[31m[E][0m[0m
+
+  TimeoutException after 0:00:30.000000: Test timed out after 30 seconds.
+
+  package:test_api/src/backend/invoker.dart 324:28              Invoker._handleError.<fn>
+  dart:async/zone.dart 1122:38                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  package:test_api/src/backend/invoker.dart 322:10              Invoker._handleError
+  package:test_api/src/backend/invoker.dart 275:9               Invoker.heartbeat.<fn>.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  package:test_api/src/backend/invoker.dart 273:38              Invoker.heartbeat.<fn>
+  package:stack_trace/src/stack_zone_specification.dart 209:15  StackZoneSpecification._run
+  package:stack_trace/src/stack_zone_specification.dart 119:48  StackZoneSpecification._registerCallback.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 949:23                                   _CustomZone.bindCallback.<fn>
+  dart:async-patch/timer_patch.dart 23:15                       Timer._createTimer.<fn>
+  dart:isolate-patch/timer_impl.dart 384:19                     _Timer._runTimers
+  dart:isolate-patch/timer_impl.dart 418:5                      _Timer._handleMessage
+  dart:isolate-patch/isolate_patch.dart 174:12                  _RawReceivePortImpl._handleMessage
+  ===== asynchronous gap ===========================
+  dart:async/zone.dart 1047:19                                  _CustomZone.registerCallback
+  dart:async/zone.dart 948:22                                   _CustomZone.bindCallback
+  dart:async/zone.dart 1193:21                                  _rootCreateTimer
+  dart:async/zone.dart 1090:19                                  _CustomZone.createTimer
+  package:test_api/src/backend/invoker.dart 272:34              Invoker.heartbeat
+  package:test_api/src/backend/invoker.dart 235:5               Invoker.waitForOutstandingCallbacks
+  package:test_api/src/backend/declarer.dart 169:33             Declarer.test.<fn>.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 1518:10                                  _runZoned
+  dart:async/zone.dart 1465:12                                  runZoned
+  package:test_api/src/backend/declarer.dart 168:13             Declarer.test.<fn>
+  package:test_api/src/backend/invoker.dart 392:25              Invoker._onRun.<fn>.<fn>.<fn>.<fn>
+  dart:async/future.dart 176:37                                 new Future.<fn>
+  package:stack_trace/src/stack_zone_specification.dart 209:15  StackZoneSpecification._run
+  package:stack_trace/src/stack_zone_specification.dart 119:48  StackZoneSpecification._registerCallback.<fn>
+  dart:async/zone.dart 1122:38                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 925:7                                    _CustomZone.runGuarded
+  dart:async/zone.dart 965:23                                   _CustomZone.bindCallbackGuarded.<fn>
+  package:stack_trace/src/stack_zone_specification.dart 209:15  StackZoneSpecification._run
+  package:stack_trace/src/stack_zone_specification.dart 119:48  StackZoneSpecification._registerCallback.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 949:23                                   _CustomZone.bindCallback.<fn>
+  dart:async-patch/timer_patch.dart 23:15                       Timer._createTimer.<fn>
+  dart:isolate-patch/timer_impl.dart 384:19                     _Timer._runTimers
+  dart:isolate-patch/timer_impl.dart 418:5                      _Timer._handleMessage
+  dart:isolate-patch/isolate_patch.dart 174:12                  _RawReceivePortImpl._handleMessage
+  ===== asynchronous gap ===========================
+  dart:async/zone.dart 1047:19                                  _CustomZone.registerCallback
+  dart:async/zone.dart 964:22                                   _CustomZone.bindCallbackGuarded
+  dart:async/timer.dart 54:45                                   new Timer
+  dart:async/timer.dart 91:9                                    Timer.run
+  dart:async/future.dart 174:11                                 new Future
+  package:test_api/src/backend/invoker.dart 391:21              Invoker._onRun.<fn>.<fn>.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 1518:10                                  _runZoned
+  dart:async/zone.dart 1465:12                                  runZoned
+  package:test_api/src/backend/invoker.dart 378:9               Invoker._onRun.<fn>.<fn>
+  package:test_api/src/backend/invoker.dart 430:15              Invoker._guardIfGuarded
+  package:test_api/src/backend/invoker.dart 377:7               Invoker._onRun.<fn>
+  package:stack_trace/src/chain.dart 101:24                     Chain.capture.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 1518:10                                  _runZoned
+  dart:async/zone.dart 1465:12                                  runZoned
+  package:stack_trace/src/chain.dart 99:12                      Chain.capture
+  package:test_api/src/backend/invoker.dart 376:11              Invoker._onRun
+  package:test_api/src/backend/live_test_controller.dart 185:5  LiveTestController._run
+  package:test_api/src/backend/live_test_controller.dart 40:37  _LiveTest.run
+  dart:async/future.dart 202:37                                 new Future.microtask.<fn>
+  dart:async/zone.dart 1122:38                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 925:7                                    _CustomZone.runGuarded
+  dart:async/zone.dart 965:23                                   _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 925:7                                    _CustomZone.runGuarded
+  dart:async/zone.dart 965:23                                   _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 43:21                      _microtaskLoop
+  dart:async/schedule_microtask.dart 52:5                       _startMicrotaskLoop
+  dart:isolate-patch/timer_impl.dart 393:30                     _Timer._runTimers
+  dart:isolate-patch/timer_impl.dart 418:5                      _Timer._handleMessage
+  dart:isolate-patch/isolate_patch.dart 174:12                  _RawReceivePortImpl._handleMessage
+
+
+00:40 [32m+6[0m[31m -1[0m: Counter App (tearDownAll)[0m
+
+00:40 [32m+6[0m[31m -1[0m: Counter App switch information tab [1m[31m[E][0m[0m
+
+  DriverError: Failed to fulfill Tap due to remote error
+  Original error: Bad state: The client closed with pending request "ext.flutter.driver".
+  Original stack trace:
+  #0      new Client.withoutJson.<anonymous closure> (package:json_rpc_2/src/client.dart:70:24)
+  #1      StackZoneSpecification._run (package:stack_trace/src/stack_zone_specification.dart:209:15)
+  #2      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:119:48)
+  #3      _rootRun (dart:async/zone.dart:1122:38)
+  #4      _CustomZone.run (dart:async/zone.dart:1023:19)
+  #5      _FutureListener.handleWhenComplete (dart:async/future_impl.dart:163:18)
+  #6      Future._propagateToListeners.handleWhenCompleteCallback (dart:async/future_impl.dart:650:39)
+  #7      Future._propagateToListeners (dart:async/future_impl.dart:706:37)
+  #8      Future._propagateToListeners (dart:async/future_impl.dart:607:9)
+  #9      Future._completeWithValue (dart:async/future_impl.dart:524:5)
+  #10     Future._asyncComplete.<anonymous closure> (dart:async/future_impl.dart:554:7)
+  #11     StackZoneSpecification._run (package:stack_trace/src/stack_zone_specification.dart:209:15)
+  #12     StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:119:48)
+  #13     _rootRun (dart:async/zone.dart:1126:13)
+  #14     _CustomZone.run (dart:async/zone.dart:1023:19)
+  #15     _CustomZone.runGuarded (dart:async/zone.dart:925:7)
+  #16     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:965:23)
+  #17     _microtaskLoop (dart:async/schedule_microtask.dart:43:21)
+  #18     _startMicrotaskLoop (dart:async/schedule_microtask.dart:52:5)
+  #19     _Timer._runTimers (dart:isolate-patch/timer_impl.dart:393:30)
+  #20     _Timer._handleMessage (dart:isolate-patch/timer_impl.dart:418:5)
+  #21     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:174:12)
+
+
+
+  package:flutter_driver/src/driver/driver.dart 449:7           FlutterDriver._sendCommand
+  ===== asynchronous gap ===========================
+  dart:async/zone.dart 1064:19                                  _CustomZone.registerBinaryCallback
+  dart:async-patch/async_patch.dart 82:23                       _asyncErrorWrapperHelper
+  package:test_api/src/backend/invoker.dart                     Invoker.waitForOutstandingCallbacks.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 1518:10                                  _runZoned
+  dart:async/zone.dart 1465:12                                  runZoned
+  package:test_api/src/backend/invoker.dart 239:5               Invoker.waitForOutstandingCallbacks
+  package:test_api/src/backend/declarer.dart 169:33             Declarer.test.<fn>.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 1518:10                                  _runZoned
+  dart:async/zone.dart 1465:12                                  runZoned
+  package:test_api/src/backend/declarer.dart 168:13             Declarer.test.<fn>
+  package:test_api/src/backend/invoker.dart 392:25              Invoker._onRun.<fn>.<fn>.<fn>.<fn>
+  dart:async/future.dart 176:37                                 new Future.<fn>
+  package:stack_trace/src/stack_zone_specification.dart 209:15  StackZoneSpecification._run
+  package:stack_trace/src/stack_zone_specification.dart 119:48  StackZoneSpecification._registerCallback.<fn>
+  dart:async/zone.dart 1122:38                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 925:7                                    _CustomZone.runGuarded
+  dart:async/zone.dart 965:23                                   _CustomZone.bindCallbackGuarded.<fn>
+  package:stack_trace/src/stack_zone_specification.dart 209:15  StackZoneSpecification._run
+  package:stack_trace/src/stack_zone_specification.dart 119:48  StackZoneSpecification._registerCallback.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 949:23                                   _CustomZone.bindCallback.<fn>
+  dart:async-patch/timer_patch.dart 23:15                       Timer._createTimer.<fn>
+  dart:isolate-patch/timer_impl.dart 384:19                     _Timer._runTimers
+  dart:isolate-patch/timer_impl.dart 418:5                      _Timer._handleMessage
+  dart:isolate-patch/isolate_patch.dart 174:12                  _RawReceivePortImpl._handleMessage
+  ===== asynchronous gap ===========================
+  dart:async/zone.dart 1047:19                                  _CustomZone.registerCallback
+  dart:async/zone.dart 964:22                                   _CustomZone.bindCallbackGuarded
+  dart:async/timer.dart 54:45                                   new Timer
+  dart:async/timer.dart 91:9                                    Timer.run
+  dart:async/future.dart 174:11                                 new Future
+  package:test_api/src/backend/invoker.dart 391:21              Invoker._onRun.<fn>.<fn>.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 1518:10                                  _runZoned
+  dart:async/zone.dart 1465:12                                  runZoned
+  package:test_api/src/backend/invoker.dart 378:9               Invoker._onRun.<fn>.<fn>
+  package:test_api/src/backend/invoker.dart 430:15              Invoker._guardIfGuarded
+  package:test_api/src/backend/invoker.dart 377:7               Invoker._onRun.<fn>
+  package:stack_trace/src/chain.dart 101:24                     Chain.capture.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 1518:10                                  _runZoned
+  dart:async/zone.dart 1465:12                                  runZoned
+  package:stack_trace/src/chain.dart 99:12                      Chain.capture
+  package:test_api/src/backend/invoker.dart 376:11              Invoker._onRun
+  package:test_api/src/backend/live_test_controller.dart 185:5  LiveTestController._run
+  package:test_api/src/backend/live_test_controller.dart 40:37  _LiveTest.run
+  dart:async/future.dart 202:37                                 new Future.microtask.<fn>
+  dart:async/zone.dart 1122:38                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 925:7                                    _CustomZone.runGuarded
+  dart:async/zone.dart 965:23                                   _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/zone.dart 1126:13                                  _rootRun
+  dart:async/zone.dart 1023:19                                  _CustomZone.run
+  dart:async/zone.dart 925:7                                    _CustomZone.runGuarded
+  dart:async/zone.dart 965:23                                   _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 43:21                      _microtaskLoop
+  dart:async/schedule_microtask.dart 52:5                       _startMicrotaskLoop
+  dart:isolate-patch/timer_impl.dart 393:30                     _Timer._runTimers
+  dart:isolate-patch/timer_impl.dart 418:5                      _Timer._handleMessage
+  dart:isolate-patch/isolate_patch.dart 174:12                  _RawReceivePortImpl._handleMessage
+
+
+00:40 [32m+6[0m[31m -1[0m: [31mSome tests failed.[0m
+
+
+Stopping application instance.
+TEST FINISHED ON ==> iPhone 5s
+TEST STARTED ON ==> iPhone X
+Starting application: test_driver/app.dart
+Running Xcode build...                                          
+Xcode build done.                                           11.3s
+flutter: Observatory listening on http://127.0.0.1:50448/AX2viFYQltQ=/
+00:00 [32m+0[0m: Counter App (setUpAll)[0m
+
+00:00 [32m+0[0m: Counter App creating test files folders[0m
+
+00:00 [32m+1[0m: Counter App creating test files folders[0m
+
+test_driver/test_output/03122019_185929/
+
+00:00 [32m+1[0m: Counter App enter height[0m
+
+00:02 [32m+2[0m: Counter App enter weight[0m
+
+00:03 [32m+3[0m: Counter App click submit[0m
+
+00:03 [32m+4[0m: Counter App take sample screenshots[0m
+
+wrote File: 'test_driver/test_output/03122019_185929/BMI_result_screenshot.png'
+
+00:05 [32m+5[0m: Counter App test result page[0m
+
+Your BMI rate is: 28
+
+00:09 [32m+6[0m: Counter App switch information tab[0m
+
+00:20 [32m+7[0m: Counter App (tearDownAll)[0m
+
+00:20 [32m+7[0m: All tests passed![0m
+
+Stopping application instance.
+TEST FINISHED ON ==> iPhone X
+TEST STARTED ON ==> iPhone 11 Pro Max
+Starting application: test_driver/app.dart
+Running Xcode build...                                          
+Xcode build done.                                            9.8s
+flutter: Observatory listening on http://127.0.0.1:50461/WtbFp3Ofzkk=/
+00:00 [32m+0[0m: Counter App (setUpAll)[0m
+
+00:00 [32m+0[0m: Counter App creating test files folders[0m
+
+00:00 [32m+1[0m: Counter App creating test files folders[0m
+
+test_driver/test_output/03122019_190019/
+
+00:00 [32m+1[0m: Counter App enter height[0m
+
+00:02 [32m+2[0m: Counter App enter weight[0m
+
+00:03 [32m+3[0m: Counter App click submit[0m
+
+00:03 [32m+4[0m: Counter App take sample screenshots[0m
+
+wrote File: 'test_driver/test_output/03122019_190019/BMI_result_screenshot.png'
+
+00:05 [32m+5[0m: Counter App test result page[0m
+
+Your BMI rate is: 28
+
+00:10 [32m+6[0m: Counter App switch information tab[0m
+
+00:20 [32m+7[0m: Counter App (tearDownAll)[0m
+
+00:20 [32m+7[0m: All tests passed![0m
+
+Stopping application instance.
+TEST FINISHED ON ==> iPhone 11 Pro Max
+
+FLUTTER UI TEST AUTOMATION COMPLETED

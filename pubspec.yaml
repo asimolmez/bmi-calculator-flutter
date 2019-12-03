@@ -26,6 +26,7 @@ dependencies:
   flutter_svg: ^0.14.4
   pie_chart: 2.0.0
   simple_animations: ^1.2.0
+  device_info: ^0.4.1
 
 dev_dependencies:
   flutter_test:
