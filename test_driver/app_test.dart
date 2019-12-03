@@ -2,7 +2,6 @@
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 import 'package:bmi_calculator/helpers/CommonHelper.dart';
-import 'package:intl/intl.dart';
 import 'dart:io';
 
 void main() {
@@ -25,16 +24,14 @@ void main() {
       }
     });
 
-    String folderName = "";
+    String folderName = "test_driver/test_output/";
+    String deviceName = "";
 
     test('creating test files folders', () async {
-
-      folderName = "test_driver/test_output/" + new DateFormat("ddMMyyyy_HHmmss").format(DateTime.now()) + "/";
-      new Directory(folderName).create()
-      // The created directory is returned as a Future.
-          .then((Directory directory) {
-        print(directory.path);
-      });
+      String deviceNameFile = "test_driver/test_output/current_device";
+      File file = new File(deviceNameFile);
+      Future<String> futureContent = file.readAsString();
+      futureContent.then((c) => deviceName = c.trim());
     });
 
     test('enter height', () async {
@@ -65,7 +62,7 @@ void main() {
     });
 
     test('take sample screenshots', () async {
-      final List<String> paths = <String>[folderName + "BMI_result_screenshot.png"];
+      final List<String> paths = <String>[folderName + deviceName + "_Calculator_result.png"];
       for (String path in paths) {
         await driver.waitUntilNoTransientCallbacks();
         final List<int> pixels = await driver.screenshot();

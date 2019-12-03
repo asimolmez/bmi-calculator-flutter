@@ -1,5 +1,6 @@
 #!/bin/sh
 LOG_FILE_NAME="test_driver/test_output/test_script_log.txt"
+CURRENT_DEVICE_FILE_NAME="test_driver/test_output/current_device"
 echo "" | tee -a $LOG_FILE_NAME
 echo "FLUTTER UI TEST AUTOMATION STARTED" | tee -a $LOG_FILE_NAME
 sleep 1
@@ -34,6 +35,7 @@ read -p "CONTINUE AND TEST ALL LISTED DEVICES ABOVE? (Y/N): " confirm && [[ $con
 for (( i=0; i<=$(( $CONNECTED_DEVICES_LENGTH -1 )); i++ ))
 do
     echo "TEST STARTED ON ==> ${CONNECTED_DEVICES[$i]}" | tee -a $LOG_FILE_NAME
+    echo "${CONNECTED_DEVICES[$i]}" > $CURRENT_DEVICE_FILE_NAME
     flutter drive --target=test_driver/app.dart -d ${CONNECTED_DEVICES[$i]}  | tee -a $LOG_FILE_NAME
     echo "TEST FINISHED ON ==> ${CONNECTED_DEVICES[$i]}" | tee -a $LOG_FILE_NAME
 done
