@@ -85,35 +85,35 @@ void main() {
       });
 
       expect(resultText, "Your BMI rate is: " + bmiResult);
-      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
 
       final SerializableFinder goBackButton = find.byValueKey("goBackButton");
       await driver.waitFor(goBackButton);
       await driver.tap(goBackButton);
 
-      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
     });
 
     test('switch information tab', () async {
       await driver.waitFor(find.byValueKey('bottomNavigation'));
       await driver.tap(find.text('Graps'));
-      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
       await driver.tap(find.text('Information'));
-      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
 
       final SerializableFinder detailsModalButton = find.byValueKey("detailsModalButton");
       await driver.waitFor(detailsModalButton);
       await driver.scrollIntoView(detailsModalButton);
       //await driver.waitFor(find.text('Scroll till here'));
-      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
       await driver.tap(detailsModalButton);
 
-      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
       final SerializableFinder detailsModalCloseButton = find.byValueKey("detailsModalCloseButton");
       await driver.waitFor(detailsModalCloseButton);
       await driver.tap(detailsModalCloseButton);
 
-      await new Future.delayed(const Duration(seconds: 2)); // wait 2 seconds
+      await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
       await driver.tap(find.text('Calculator'));
     });
   });
