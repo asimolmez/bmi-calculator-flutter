@@ -4,6 +4,8 @@ import 'package:test/test.dart';
 import 'package:bmi_calculator/helpers/CommonHelper.dart';
 import 'dart:io';
 
+int screenShotCounter = 1;
+
 void main() {
   group('Counter App', () {
     // First, define the Finders and use them to locate widgets from the
@@ -52,6 +54,7 @@ void main() {
       await driver.waitFor(weightInput);
       await driver.enterText('90');
       await driver.waitFor(find.text('90'));
+      await _captureScreenShot(driver, folderName, deviceName, "BMI_Screen");
       await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
     });
 
@@ -59,17 +62,6 @@ void main() {
       final SerializableFinder calculateButton = find.byValueKey("calculateButton");
       await driver.waitFor(calculateButton);
       await driver.tap(calculateButton);
-    });
-
-    test('take sample screenshots', () async {
-      final List<String> paths = <String>[folderName + deviceName + "_Calculator_result.png"];
-      for (String path in paths) {
-        await driver.waitUntilNoTransientCallbacks();
-        final List<int> pixels = await driver.screenshot();
-        final File file = new File(path);
-        await file.writeAsBytes(pixels);
-        print('wrote $file');
-      }
     });
 
     test('test result page', () async {
@@ -85,6 +77,7 @@ void main() {
       });
 
       expect(resultText, "Your BMI rate is: " + bmiResult);
+      await _captureScreenShot(driver, folderName, deviceName, "BMI_Result");
       await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
 
       final SerializableFinder goBackButton = find.byValueKey("goBackButton");
@@ -97,16 +90,22 @@ void main() {
     test('switch information tab', () async {
       await driver.waitFor(find.byValueKey('bottomNavigation'));
       await driver.tap(find.text('Graps'));
+      await driver.waitFor(find.text("TRBZ"));
+      await _captureScreenShot(driver, folderName, deviceName, "Graphs_Tab");
       await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
       await driver.tap(find.text('Information'));
+      await driver.waitForAbsent(find.text("TRBZ"));
+      await _captureScreenShot(driver, folderName, deviceName, "Information_Tab");
       await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
 
       final SerializableFinder detailsModalButton = find.byValueKey("detailsModalButton");
       await driver.waitFor(detailsModalButton);
       await driver.scrollIntoView(detailsModalButton);
+      await _captureScreenShot(driver, folderName, deviceName, "Information_Tab_Scrolled");
       //await driver.waitFor(find.text('Scroll till here'));
       await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
       await driver.tap(detailsModalButton);
+      await _captureScreenShot(driver, folderName, deviceName, "Information_Detail_Modal");
 
       await new Future.delayed(const Duration(seconds: 1)); // wait 1 seconds
       final SerializableFinder detailsModalCloseButton = find.byValueKey("detailsModalCloseButton");
@@ -117,4 +116,15 @@ void main() {
       await driver.tap(find.text('Calculator'));
     });
   });
+}
+
+_captureScreenShot(FlutterDriver driver, String folderName, String deviceName, String fileName) async {
+  final String path = folderName + deviceName + "_" + screenShotCounter.toString() + "_" + fileName + ".png";
+  await driver.waitUntilNoTransientCallbacks();
+  final List<int> pixels = await driver.screenshot();
+  final File file = new File(path);
+  await file.writeAsBytes(pixels);
+  print('wrote $file');
+
+  screenShotCounter++;
 }
